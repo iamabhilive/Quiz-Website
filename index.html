@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TechQuiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link href = "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel = "stylesheet"> 
+<link rel = "stylesheet" href = "https://cdn.rawgit.com/mfd/09b70eb47474836f25a21660282ce0fd/raw/e06a670afcb2b861ed2ac4a1ef752d062ef6b46b/Gilroy.css"> 
+<link rel = "stylesheet" href = "style.css">
+<link rel = "icon" href = "TechQuiz.png">
+
+<icons>
+<link href = "https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel = "stylesheet"> <link rel = "stylesheet" href = "style3.css"> 
+<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity = "sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin = "anonymous"> 
+<link rel = "stylesheet" href = "C:\Users\Hp\Desktop\My Works\PHP WITH LARAVEL BY IBM-CE\bootstrap-5.0.1-dist\css\bootstrap.min.css">
+
+<link rel = "stylesheet" href = "https://www.griffininsight.com/css/animate.css"/>
+
+<link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel = "stylesheet" href = "css/bootstrap.min.css">
+<link rel = "stylesheet" href = "css/bootstrap.css">
+<!--<link rel = "stylesheet" href = "css/styles.css">-->
+<link href = "https://fonts.googleapis.com/css?family=Oxygen:400,300,700" rel = "stylesheet" type = "text/css">
+<link href = "https://fonts.googleapis.com/css?family=Lora" rel = "stylesheet" type = "text/css">
+    
+<script src = "js\bootstrap.min.js"></script>
+<script src = "js\ajax-utils.js"></script>
+<script src = "js\jquery-2.1.4.min.js"></script>
+
+<script>
+function validateForm () {
+	var x = document.forms["SignUp"]["psw1"].value;
+	var y = document.forms["SignUp"]["psw2"].value;
+
+	if (x != y) {	
+		alert("The passwords are not matching!");
+	}
+}
+</script>
+
+</head>
+<body>
+
+<div id = "main">
+  <!--<span style = "font-size: 30px; cursor: pointer" onclick = "openNav()">&#9776; </span>-->
+  <button class = "menubutton" style = "font-size: 30px; cursor: pointer; background-color: lightgreen; border-radius: 10px" onclick = "openNav()" title = "Menu"><i class = "fa fa-bars"></i></button>
+</div>
+
+<div id = "full" onclick = "closeNav()">
+  <div id = "enter"  style = "display: block;">
+    <button class = "fl" style = "float: right; top: 10px; right: 10px; cursor: pointer; border: none" onclick = "openFullscreen()" title = "Fullscreen"><i class = "ri-fullscreen-line"></i></button>
+  </div>  
+  <div id = "exit"  style = "display: none;">
+    <button class = "fl" style = "float: right; top: 10px; right: 10px; cursor: pointer; border: none" onclick = "closeFullscreen()" title = "Exit Fullscreen"><i class = "ri-fullscreen-exit-line"></i></button>
+  </div>
+</div>
+
+<div onclick = "closeNav()">
+  <button onclick = "topFunction()" id = "myBtn" title = "Go to top"><h5><b><i class = "ri-arrow-up-line"></i></b></h5></button>
+</div>
+
+<div class = "header" onclick = "closeNav()" style = "border-radius: 15px">
+  <div class = "glow"><h1><a href = "#"><img src = "TechQuiz.png"></a> TechQuiz</h1></div>
+  <p><b>Get your skills towards demand!!</b></p>
+
+<button class = "f lsmall" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+<button class = "f lsmall" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+
+<div id = "id01" class="modal">
+<form class="modal-content animate" action="/action_page.php" method="post">
+    <div class="imgcontainer">
+<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+     <h3 style = "color: blue;"><u>Login</u></h3>
+      <img src="avatar.jpg" alt="Avatar" class="avatar">
+</div>
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" id = "psw" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+        
+<div id="message">
+  <h3>Password must contain the following:</h3>
+  <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number" class="invalid">A <b>number</b></p>
+  <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+</div>
+
+      <button class = "f" type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="f cancelbtn">Cancel</button>
+      <span class="psw"><a href="#">Forgot password?</a></span>
+</div>
+    </div>
+  </form>
+
+</div>
+</div>
+
+<div id="id02" class="modal">
+
+  <form name = "SignUp" onsubmit = "validateForm()" class="modal-content animate" action="/action_page.php" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <h3 style = "color: blue;"><u>Sign Up</u></h3>
+      <img src="avatar.jpg" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+<label for="email"><b>Email</b></label>
+<input type = "text" placeholder = "Enter Email" name = "email" required>
+
+<label for="psw"><b>Password</b></label>
+<input type="password" placeholder="Enter Password" name="psw1" id = "psw1" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+        
+<div id="message1">
+  <h3>Password must contain the following:</h3>
+  <p id="letter1" class="invalid">A <b>lowercase</b> letter</p>
+  <p id="capital1" class="invalid">A <b>capital (uppercase)</b> letter</p>
+  <p id="number1" class="invalid">A <b>number</b></p>
+  <p id="length1" class="invalid">Minimum <b>8 characters</b></p>
+</div>
+ 
+<label for="psw"><b>Re enter Password</b></label>
+<input type="password" placeholder="Re enter Password" name="psw2" id = "psw2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+<p id = "pswmismatch"></p>
+    <button class = "f" type="submit">SignUp</button>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="f cancelbtn">Cancel</button>
+</div>
+    </div>
+  </form>
+
+</div>
+</div>
+
+<div class = "topnav sticky-top" id = "topnav" onclick = "closeNav()" style = "border-radius: 15px">
+  <button class = "btn"><a href = "#"><i class = "fa fa-home"></i> Home</a></button>
+  <button class = "btn"><a href = "#quiz"><i class = "ri-question-answer-line"></i> Quiz</a></button>
+  <button class = "btn"><a href = "#about"><i class = "ri-user-3-line"></i> About</a></button>
+  <button class = "btn"><a href = "#help"><i class = "ri-question-line"></i> Help</a></button>
+  <button class = "btn"><a href = "#foot"><i class = "ri-phone-line"></i> Contact Us</a></button>
+  <!--<button class = "dropdown-toggle" data-toggle = "dropdown" href = "#">Login/ SignUp</button>
+  <div class = "dropdown-menu">
+  <button class = "dropdown-item" onclick = "document.getElementById('id01').style.display='block'">Login</button>
+  <button class = "dropdown-item" onclick="document.getElementById('id02').style.display='block'">SignUp</button>
+  </div>-->
+  <!--<img src = "TechQuiz.png" style = "width: 150px; height: 100px;">-->
+  <!--<button class = "btn" style = "float:right"><a href = "#"><i class = "fa fa-bars"></i> Menu</a></button>-->
+</div>
+
+<div id = "mySidenav" class = "sidenav" onfocusout = "closeNav()" style = "border-radius: 15px"> <!--onmouseleave = "closeNav()"-->
+  <button class = "menubutton" id = "me" style = "font-size: 30px; cursor: pointer; background-color: lightgreen; border-radius: 10px;" onclick = "closeNav()" title = "Close Menu"><i class = "fa fa-bars"></i></button>
+  <a href = "javascript:void(0)" class = "closebtn" style = "border: none;" onclick = "closeNav()" title = "Close Menu">&times;</a>
+  <br><a href = "#"><i class="fa fa-home"></i> Home</a><!--<hr style = "border-top: 1px solid red">-->
+  <a href = "#quiz"><i class = "ri-question-answer-line"></i> Quiz</a><!--<hr style = "border-top: 1px solid red">-->
+  <a href = "#about"><i class = "ri-user-3-line"></i> About</a>
+  <a href = "#help"><i class = "ri-question-line"></i> Help</a>
+  <a href = "#foot"><i class = "ri-phone-line"></i> Contact Us</a>
+  <a class = "dropdown-toggle" data-toggle = "dropdown" href = "#">Login/ SignUp</a>
+  <div class = "dropdown-menu">
+  <button class = "dropdown-item" onclick = "document.getElementById('id01').style.display='block'">Login</button>
+  <button class = "dropdown-item" onclick="document.getElementById('id02').style.display='block'">SignUp</button>
+  </div>
+  <a href = "Website.html"><img src = "TechQuiz.png" style = "opacity: 0.65"></a>
+</div>
+
+<!--<div id="main">
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+</div>-->
+
+<section id = "quiz" onclick = "closeNav()" style = "border-radius: 12px">
+  <h2 style = "padding: 0px 20px;"><b><br>Quiz</b></h2>
+  <p></p>
+
+  <div class = "tab">
+    <button class = "tablinks" onclick = "openQuestion(event, 'q1')" id = "defaultOpen">Question 1</button>
+    <button class = "tablinks" onclick = "openQuestion(event, 'q2')">Question 2</button>
+    <button class = "tablinks" onclick = "openQuestion(event, 'q3')">Question 3</button>
+    <button class = "tablinks" onclick = "openQuestion(event, 'q4')">Question 4</button>
+    <button class = "tablinks" onclick = "openQuestion(event, 'q5')">Question 5</button>
+    <button class = "tablinks" onclick = "openQuestion(event, 'q6')">Question 6</button>
+    <button class = "tablinks" onclick = "openQuestion(event, 'q7')">Question 7</button>
+    <button class = "tablinks" onclick = "openQuestion(event, 'q8')">Question 8</button>
+    <button class = "tablinks" onclick = "openQuestion(event, 'q9')">Question 9</button>
+    <button class = "tablinks" onclick = "openQuestion(event, 'q10')">Question 10</button>
+  </div>
+
+  <div id = "q1" class = "tabcontent">
+    <span onclick = "this.parentElement.style.display = 'none'" class = "topright" title = "Close">&times</span>
+    <h3>What is the output of the following program? <br>print("Hello World"[ : :-1])</h3>
+    <ol>
+    <li><p>dlroW olleH</p></li>
+    <li><p>Hello World</p></li>
+    <li><p>d</p></li>
+    <li><p>Error</p></li>
+    </ol>
+    <!--<span onclick = "" class = "bottomright" title = "Next">Next</span>-->
+    <ul id = "myUL">
+    <li><span class = "caret" title = "Click to see the Answer"><b>Answer</b></span>
+    <ul class = "nested">
+      <li>1. dlroW olleH</li>
+    </ul>
+    </li>
+    </ul>
+  </div>
+
+  <div id = "q2" class = "tabcontent">
+    <span onclick = "this.parentElement.style.display = 'none'" class = "topright" title = "Close">&times</span>
+    <h3>Given a function that does not return any value, what value is shown when executed at the shell?</h3>
+    <ol>
+    <li><p>int</p></li>
+    <li><p>bool</p></li>
+    <li><p>void</p></li>
+    <li><p>None</p></li>
+    </ol>
+    <ul id = "myUL">
+    <li><span class = "caret" title = "Click to see the Answer"><b>Answer</b></span>
+    <ul class = "nested">
+      <li>4. None</li>
+    </ul>
+    </li>
+    </ul>
+  </div>
+
+  <div id = "q3" class = "tabcontent">
+    <span onclick = "this.parentElement.style.display = 'none'" class = "topright" title = "Close">&times</span>
+    <h3>What does ~~~~~~5 evaluate to?</h3>
+    <ol>
+    <li><p>+5</p></li>
+    <li><p>-11</p></li>
+    <li><p>+11</p></li>
+    <li><p>-5</p></li>
+    </ol>
+    <ul id="myUL">
+    <li><span class="caret" title = "Click to see the Answer"><b>Answer</b></span>
+    <ul class="nested">
+      <li>1. +5</li>
+    </ul>
+    </li>
+    </ul>
+  </div>
+
+  <div id = "q4" class = "tabcontent">
+    <span onclick = "this.parentElement.style.display = 'none'" class = "topright" title = "Close">&times</span>
+    <h3>What is the relation between a class and an object?</h3>
+    <ol>
+    <li><p>A class is an instance of an object.</p></li>
+    <li><p>An object is an instance of a class.</p></li>
+    <li><p>An object is an attribute of a class.</p></li>
+    <li><p>None of the above.</p></li>
+    </ol>
+    <ul id = "myUL">
+    <li><span class = "caret" title = "Click to see the Answer"><b>Answer</b></span>
+    <ul class = "nested">
+      <li>2. An object is an instance of a class.</li>
+    </ul>
+    </li>
+    </ul>
+  </div>
+
+  <div id = "q5" class = "tabcontent">
+    <span onclick = "this.parentElement.style.display = 'none'" class = "topright" title = "Close">&times</span>
+    <h3>Which of the following is a valid variable name?</h3>
+    <ol>
+    <li><p>global</p></li>
+    <li><p>99flag</p></li>
+    <li><p>sum</p></li>
+    <li><p>an$wer</p></li>
+    </ol>
+    <ul id = "myUL">
+    <li><span class = "caret" title = "Click to see the Answer"><b>Answer</b></span>
+    <ul class = "nested">
+      <li>3. sum</li>
+    </ul>
+    </li>
+    </ul>
+  </div>
+
+  <div id = "q6" class = "tabcontent">
+    <span onclick = "this.parentElement.style.display = 'none'" class = "topright" title = "Close">&times</span>
+    <h3>If the value of a = 20 and b = 20, then a += b will assign ________ to a. </h3>
+    <ol>
+    <li><p>40</p></li>
+    <li><p>30</p></li>
+    <li><p>20</p></li>
+    <li><p>10</p></li>
+    </ol>
+    <ul id = "myUL">
+    <li><span class = "caret" title = "Click to see the Answer"><b>Answer</b></span>
+    <ul class = "nested">
+      <li>1. 40</li>
+    </ul>
+    </li>
+    </ul>
+  </div>
+
+  <div id = "q7" class = "tabcontent">
+    <span onclick = "this.parentElement.style.display = 'none'" class = "topright" title = "Close">&times</span>
+    <h3>The ____________ operator is used to find out if division of two number yields any remainder.</h3>
+    <ol>
+    <li><p>/</p></li>
+    <li><p>+</p></li>
+    <li><p>%</p></li>
+    <li><p>//</p></li>
+    </ol>
+    <ul id = "myUL">
+    <li><span class = "caret" title = "Click to see the Answer"><b>Answer</b></span>
+    <ul class="nested">
+      <li>3. %</li>
+    </ul>
+    </li>
+    </ul>
+  </div>
+
+  <div id = "q8" class = "tabcontent">
+    <span onclick = "this.parentElement.style.display = 'none'" class = "topright" title = "Close">&times</span>
+    <h3>What is used to create an object?</h3>
+    <ol>
+    <li><p>Constructor</p></li>
+    <li><p>Class</p></li>
+    <li><p>Method</p></li>
+    <li><p>None of the above.</p></li>
+    </ol>
+    <ul id = "myUL">
+    <li><span class="caret" title = "Click to see the Answer"><b>Answer</b></span>
+    <ul class="nested">
+      <li>2. Class</li>
+    </ul>
+    </li>
+    </ul>
+  </div>
+
+  <div id = "q9" class = "tabcontent">
+    <span onclick = "this.parentElement.style.display = 'none'" class = "topright" title = "Close">&times</span>
+    <h3>____________ represents an entity in the real world that can be distinctly identified. </h3>
+    <ol>
+    <li><p>Object</p></li>
+    <li><p>Class</p></li>
+    <li><p>Method</p></li>
+    <li><p>None of the above.</p></li>
+    </ol>
+    <ul id = "myUL">
+    <li><span class = "caret" title = "Click to see the Answer"><b>Answer</b></span>
+    <ul class = "nested">
+      <li>1. Object</li>
+    </ul>
+    </li>
+    </ul>
+  </div>
+
+  <div id = "q10" class = "tabcontent">
+    <span onclick = "this.parentElement.style.display = 'none'" class = "topright" title = "Close">&times</span>
+    <h3>Which variables are used to keep a count of number of objects created from a class?</h3>
+    <ol>
+    <li><p>Class</p></li>
+    <li><p>Object</p></li>
+    <li><p>Ordinary</p></li>
+    <li><p>Temporary</p></li>
+    </ol>
+    <ul id = "myUL">
+    <li><span class = "caret" title = "Click to see the Answer"><b>Answer</b></span>
+    <ul class = "nested">
+      <li>1. Class</li>
+    </ul>
+    </li>
+    </ul>
+  </div>
+  </div>
+</section>
+
+<section id = "about" onclick = "closeNav()" style = "border-radius: 12px">
+  <div class = "row">
+    <div class = "leftcolumn">
+      <div class = "post">
+        <h2><b>About</b></h2>
+        <h5>This website is designed to provide questions related to the specific fields.</h5>
+        <div class = "fakeimg" style = "height:200px; border-radius: 15px">Image</div>
+        <p>Some text..</p>
+        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      </div>
+      <!--<div class="post">
+        <h2>TITLE HEADING</h2>
+        <h5>Title description, Sep 2, 2017</h5>
+        <div class = "fakeimg" style = "height:200px; border-radius: 15px">Image</div>
+          <p>Some text..</p>
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+</div>-->
+		
+        
+      </div>
+      <div class = "rightcolumn">
+        <div class = "card" style = "border-radius: 15px">
+          <h2>About Me</h2>
+          <div class = "card" style = "border-radius: 15px">
+            <img src = "Abhi.jpg" alt = "Abhishek K Singh" style = "padding-left: 25px; width: 90%">
+            <h1>Abhishek K Singh</h1>
+            <p class = "title">Founder</p>
+            <p>TechQuiz <img src = "TechQuiz.png" style = "width: 75px; height: 50px;"></p>
+            <div style = "margin: 12px 0;">
+              <a href = "https://www.instagram.com/iamabhilive" target = blank><i class = "fa fa-instagram" title = "Instagram"></i></a>
+              <a href = "https://www.facebook.com/profile.php?id=100014679579725" target = blank><i class = "fa fa-facebook" title = "Facebook"></i></a>
+              <a href = "https://www.linkedin.com/in/abhishek-k-singh-3b8758192" target = blank><i class = "fa fa-linkedin" title = "Linkedin"></i></a>       
+              <a href = "https://twitter.com/iamabhilive" target = blank><i class = "fa fa-twitter" title = "Twitter"></i></a>  
+            </div>
+            <p><a href = "tel:+916289803851"><but><i class = "ri-phone-line"></i> Contact</but></a></p>
+            <p><a href = "mailto:iamabhilive@gmail.com"><but><i class = "ri-mail-line"></i> Email</but></a></p>
+          </div>
+        </div>
+        <div class = "card" style = "border-radius: 15px">
+          <h3>Popular Post</h3>
+          <div class = "fakeimg"><p>Image</p></div>
+          <div class = "fakeimg"><p>Image</p></div>
+          <div class = "fakeimg"><p>Image</p></div>
+        </div>
+        <div class = "card" style = "border-radius: 15px">
+          <h3>Follow Me</h3>
+          <p>Instagram, Linkedin</p>
+        </div>
+      </div>
+  </div>
+</section>
+
+<section id = "help" onclick = "closeNav()">
+  <br>
+  <h2 style = "padding: 0px 20px;"><b>Tips</b></h2>
+  <button class = "accordion"><b>Section 1</b></button>
+  <div class = "panel">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+
+  <button class = "accordion"><b>Section 2</b></button>
+  <div class = "panel">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+
+  <button class = "accordion"><b>Section 3</b></button>
+  <div class = "panel">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+</section>
+
+<section id = "foot" onclick = "closeNav()">
+  <div class = "footer" style = "border-radius: 15px">
+    <h2><b>Contact Us</b></h2>
+    <div class = "icons">
+      <b>
+      <center><a href = "https://www.linkedin.com/in/abhishek-k-singh-3b8758192" target = blank><i class = "ri-linkedin-line" title = "Linkedin"></i></a>
+      <a href = "https://www.instagram.com/iamabhilive" target = blank><i class = "ri-instagram-line" title = "Instagram"></i></a>
+      <a href = "https://www.facebook.com/profile.php?id=100014679579725" target = blank><i class="ri-facebook-line" title = "Facebook"></i></a>
+      <a href = "https://twitter.com/iamabhilive" target = blank><i class = "ri-twitter-line" title = "Twitter"></i></a>
+      <!--<a href = "https://web.whatsapp.com/" target = blank><i class = "ri-whatsapp-line" title = "Whatsapp"></i></a>-->
+      <a href = "mailto:iamabhilive@gmail.com"><i class = "ri-mail-line" title = "Mail"></i></a></center>
+      </b>
+    </div>
+    <div class = "info">
+      <i>
+      <a href = "tel:+916289803851" title = "Call"><b>Call us</b></a>: 6289803851<br>
+      <b>Address: </b>Varanasi, UP<br>
+      221007
+	  <center><hr style = "border: 2px solid red; width: 50%"></center>
+      &copy; Copyright 2022<br>
+      Made with ❤ by 
+	  <a href = "https://www.linkedin.com/in/abhishek-k-singh-3b8758192" target = blank title = "Linkedin"><b>Abhishek K Singh</b></a>
+      </i>
+    </div>
+  </div>
+</section>
+
+<!--<div id = "meeting" style = "border: 1px solid #ccc;; width = 10%">
+  <button onmouseenter = "time()" onmouseleave = "hide()">View meetings</button>
+  <div id = "timetable" style = "display: none">
+    <button onmouseenter = "time()" onmouseleave = "hide()">Timetable</button>
+  </div>
+</div>-->
+
+<!--<script>
+  function time() {
+    document.getElementById("timetable").style.display = "block";
+  }
+
+  function hide() {
+    document.getElementById("timetable").style.display = "none";
+  }
+</script>-->
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+var modal1 = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+	if (event.target == modal1) {
+		modal1.style.display = "none";
+	}	
+}
+
+</script>
+
+<script>
+var myInput = document.getElementById("psw");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+var myInput1 = document.getElementById("psw1");
+var letter1 = document.getElementById("letter1");
+var capital1 = document.getElementById("capital1");
+var number1 = document.getElementById("number1");
+var length1 = document.getElementById("length1");
+
+var myInput2 = document.getElementById("psw2");
+
+myInput2.onkeyup = function() {
+	if (myInput2.value != myInput1.value) {	
+		document.getElementById("pswmismatch").style.color = "red";
+		document.getElementById("pswmismatch").innerHTML = "Password mismatch!";
+	}
+	else {
+		document.getElementById("pswmismatch").style.color = "green";
+		document.getElementById("pswmismatch").innerHTML = "Password matches.";
+	}
+}
+
+myInput2.onfocus = function() {
+	if (myInput2.value != myInput1.value) {	
+		document.getElementById("pswmismatch").style.color = "red";
+		document.getElementById("pswmismatch").innerHTML = "Password mismatch!";
+	}
+	else {
+		document.getElementById("pswmismatch").style.color = "green";
+		document.getElementById("pswmismatch").innerHTML = "Password matches.";
+	}
+}		
+
+// When the user clicks on the password field, show the message box
+myInput.onfocus = function() {
+  document.getElementById("message").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput.onblur = function() {
+  document.getElementById("message").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput.value.match(lowerCaseLetters)) {  
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput.value.match(upperCaseLetters)) {  
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput.value.match(numbers)) {  
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+  
+  // Validate length
+  if(myInput.value.length >= 8) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+}
+
+// When the user clicks on the password field, show the message box
+myInput1.onfocus = function() {
+  document.getElementById("message1").style.display = "block";
+}
+
+// When the user clicks outside of the password field, hide the message box
+myInput1.onblur = function() {
+  document.getElementById("message1").style.display = "none";
+}
+
+// When the user starts to type something inside the password field
+myInput1.onkeyup = function() {
+  // Validate lowercase letters
+  var lowerCaseLetters = /[a-z]/g;
+  if(myInput1.value.match(lowerCaseLetters)) {  
+    letter1.classList.remove("invalid");
+    letter1.classList.add("valid");
+  } else {
+    letter1.classList.remove("valid");
+    letter1.classList.add("invalid");
+  }
+  
+  // Validate capital letters
+  var upperCaseLetters = /[A-Z]/g;
+  if(myInput1.value.match(upperCaseLetters)) {  
+    capital1.classList.remove("invalid");
+    capital1.classList.add("valid");
+  } else {
+    capital1.classList.remove("valid");
+    capital1.classList.add("invalid");
+  }
+
+  // Validate numbers
+  var numbers = /[0-9]/g;
+  if(myInput1.value.match(numbers)) {  
+    number1.classList.remove("invalid");
+    number1.classList.add("valid");
+  } else {
+    number1.classList.remove("valid");
+    number1.classList.add("invalid");
+  }
+  
+  // Validate length
+  if(myInput1.value.length >= 8) {
+    length1.classList.remove("invalid");
+    length1.classList.add("valid");
+  } else {
+    length1.classList.remove("valid");
+    length1.classList.add("invalid");
+  }
+}
+</script>
+
+<script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    //document.getElementById("main").style.marginLeft = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    //document.getElementById("main").style.marginLeft= "0";
+  }
+</script>
+
+<script>
+  var toggler = document.getElementsByClassName("caret");
+  var i;
+
+  for (i = 0; i < toggler.length; i++) {
+    toggler[i].addEventListener("click", function() {
+      this.parentElement.querySelector(".nested").classList.toggle("active");
+      this.classList.toggle("caret-down");
+    });
+  }
+</script>
+
+<script>
+  function openQuestion(evt, question) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(question).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  //Get the element with id = "defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+</script>
+
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      } 
+    });
+  }
+</script>
+
+<script>
+  var mybutton = document.getElementById("myBtn");
+
+  //When the user scrolls down 200px from the top of the document, show the button
+  window.onscroll = function() {scrollFunction()};
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+      mybutton.style.display = "block";
+    } 
+    else {
+      mybutton.style.display = "none";
+    }
+
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    //  document.getElementById("topnav").style.left = "80px";
+    //  document.getElementById("topnav").style.top = "-10px";
+    //  document.getElementById("topnav").style.position = "fixed";
+    //  document.getElementById("topnav").style.width = "98%";
+      document.getElementById("topnav").style.opacity = "0.85";
+    //  document.getElementById("topnav").style.height = "12%";
+    }
+    else {
+    //  document.getElementById("topnav").style.position = "inherit";
+    //  document.getElementById("topnav").style.width = "inherit";
+      document.getElementById("topnav").style.opacity = "inherit";
+    //  document.getElementById("topnav").style.height = "inherit";
+    }
+  }
+
+  //When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+
+<script>
+  /*Get the element you want displayed in fullscreen */ 
+  var elem = document.documentElement;
+
+  /*Function to open fullscreen mode */
+  function openFullscreen() {
+    if (elem.requestFullscreen) {
+      elem.requestFullscreen();
+    } else if (elem.mozRequestFullScreen) { /* Firefox */
+      elem.mozRequestFullScreen();
+    } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+      elem.webkitRequestFullscreen();
+    } else if (elem.msRequestFullscreen) { /* IE/Edge */
+      elem = window.top.document.body; //To break out of frame in IE
+      elem.msRequestFullscreen();
+    }
+    document.getElementById("enter").style.display = "none";
+    document.getElementById("exit").style.display = "block";
+  }
+
+  /* Function to close fullscreen mode */
+  function closeFullscreen() {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      window.top.document.msExitFullscreen();
+    }
+    document.getElementById("enter").style.display = "block";
+    document.getElementById("exit").style.display = "none";
+  }
+</script>
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> 
+<script src="jquery.lettering-0.6.1.min.js"></script> 
+
+<script src="textillate.JS"></script> 
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"> </script> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"> </script> 
+<script src="script1.js"></script> 
+<script src="scripts.js"></script>
+
+<!-- jQuery (Bootstrap JS plugins depend on it) -->
+<!-- <script src="js/jquery-2.1.4.min.js"></script>
+<script src = "C:\Users\Hp\Desktop\My Works\PHP WITH LARAVEL BY IBM-CE\bootstrap-5.0.1-dist\css\bootstrap.min.css"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src = "C:\Users\Hp\Desktop\My Works\PHP WITH LARAVEL BY IBM-CE\bootstrap-5.0.1-dist\css\bootstrap.min.css"></script>
+<script src="js/ajax-utils.js"></script>
+<script src = "C:\Users\Hp\Desktop\My Works\PHP WITH LARAVEL BY IBM-CE\bootstrap-5.0.1-dist\css\bootstrap.min.css"></script>
+<script src="js/script.js"></script> -->
+
+<!--<details ontoggle="myFunction()">
+<summary>Copyright 2022.</summary>
+<p> - . All Rights Reserved.</p>
+</details>-->
+
+</body>
+</html>
